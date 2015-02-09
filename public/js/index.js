@@ -269,11 +269,12 @@
   function onError(error) {
     var errorMsg = 'Error processing the request.';
     if (error) {
-    	try { 
-    		errorMsg = JSON.stringify(error, null, 4);
-    	} catch (e) { // a complex object - can't be converted to json, take it's string representation
-    		errorMsg = error;
-    	}
+      try { 
+        errorMsg = JSON.stringify(error, null, 4);
+      } catch (e) {
+        // a complex object - can't be converted to json, take it's string representation
+        errorMsg = error;
+      }
     }
 
     $('.errorMsg').text(errorMsg);
