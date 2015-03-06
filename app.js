@@ -19,7 +19,7 @@
 var express = require('express'),
   app = express(),
   bluemix = require('./config/bluemix'),
-  TradeoffAnalytics = require('./tradeoff-analytics'),
+  watson = require('watson-developer-cloud'),
   extend = require('util')._extend;
 
 // Bootstrap application settings
@@ -27,13 +27,13 @@ require('./config/express')(app);
 
 // if bluemix credentials exists, then override local
 var credentials = extend({
-  url: '<url>',
+  version: 'v1',
   username: '<username>',
   password: '<password>'
 }, bluemix.getServiceCreds('tradeoff_analytics')); // VCAP_SERVICES
 
 // Create the service wrapper
-var tradeoffAnalytics = new TradeoffAnalytics(credentials);
+var tradeoffAnalytics = watson.tradeoff_analytics(credentials);
 
 // render index page
 app.get('/', function(req, res) {
