@@ -317,7 +317,7 @@ function onError(error) {
     if ($('#minimizeBar').is(':visible')) { // still visible after the timeout
        $('#taWidgetContainer').stop(true);
        $('#taWidgetContainer').animate({
-     top: 0
+		 top: 0
        }, MIN_BAR_SLIDE_PERIOD);
        $('#visibleMinimizeBar').stop(true);
      $('#visibleMinimizeBar').animate({
