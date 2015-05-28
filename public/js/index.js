@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-/*global $:false */
-
 'use strict';
 
 /**
@@ -28,6 +26,7 @@
   var lastTheme = $('#themes option:first').val();
   var lastProfile = 'basic';
   var MIN_BAR_SLIDE_PERIOD = 500;
+  var currentProblem ;
 
   /**
    * Smooth scroll to any DOM element
@@ -67,16 +66,28 @@
   function loadTradeoffAnalytics(profile, themeName, callback, errCallback) {
     taClient = new TradeoffAnalytics({
       dilemmaServiceUrl: '/',
-      customCssUrl: 'https://ta-cdn.mybluemix.net/modmt/styles/' + themeName + '.css',
-      profile: profile,
-      errCallback: errCallback
+      customCssUrl: 'http://ta-cdn.mybluemix.net/v1/modmt/styles/' + themeName + '.css',
+      profile: profile
     }, 'taWidgetContainer');
 
-    taClient.start(callback);
+    taClient.subscribe('started', callback);
+    taClient.subscribe('afterError', errCallback);
+    taClient.subscribe('doneClicked', onResultSelection);
+    
+    var topics = [ 'started', 'problemChanged', 'destroyed', 'doneClicked', 'optionClicked', 'X_finalDecisionChanged',
+        'X_favoritesChanged', 'X_selectionChanged', 'X_filterChanged'/*, 'X_optionHovered'*/ ];
+    topics.forEach(function(t){
+      taClient.subscribe(t, function (e){
+        console.log(JSON.stringify(e));
+      });
+    });
+    
+    taClient.start();
   }
 
   function showTradeoffAnalytcsWidget(problem) {
-    taClient.show(problem, onResultsReady, onResultSelection);
+    taClient.show(problem, onResultsReady);
+    currentProblem = problem;
   }
 
   function destroyTradeoffAnalytcsWidget(callback) {
@@ -214,11 +225,15 @@
     jumpTo('#taWidgetContainer');
   }
 
-  function onResultSelection(selection) {
+  function onResultSelection(event) {
     onRestore();
-    if (selection) {
+    if (event.selectedOptionKeys) {
       $('.decisionArea').show();
-      $('.decisionText').text(selection.name);
+      var selectedOptionKey = event.selectedOptionKeys[0];//currently, maximum one option is selected 
+      var firstOptionName = currentProblem.options.filter(function(op){
+        return op.key === selectedOptionKey;
+      })[0].name;
+      $('.decisionText').text(firstOptionName);
       jumpTo('.decisionArea');
     } else {
       $('.decisionText').text('');
@@ -317,7 +332,7 @@ function onError(error) {
     if ($('#minimizeBar').is(':visible')) { // still visible after the timeout
        $('#taWidgetContainer').stop(true);
        $('#taWidgetContainer').animate({
-     top: 0
+		 top: 0
        }, MIN_BAR_SLIDE_PERIOD);
        $('#visibleMinimizeBar').stop(true);
      $('#visibleMinimizeBar').animate({
