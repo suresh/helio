@@ -26,6 +26,7 @@
   var lastTheme = $('#themes option:first').val();
   var lastProfile = 'basic';
   var MIN_BAR_SLIDE_PERIOD = 500;
+  var currentProblem ;
 
   /**
    * Smooth scroll to any DOM element
