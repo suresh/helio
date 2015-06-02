@@ -20,7 +20,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
   ```none
   applications:
   - services:
-    - tradeoff-analytics-service
+    - tradeoff-analytics-standard-service
     name: <application-name>
     command: node app.js
     path: .
@@ -36,7 +36,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 
 5. Create the Tradeoff Analytics service in Bluemix.
   ```sh
-  $ cf create-service tradeoff_analytics standard tradeoff-analytics-service
+  $ cf create-service tradeoff_analytics standard tradeoff-analytics-standard-service
   ```
 
 6. Push it live!
@@ -49,7 +49,7 @@ See the full [Getting Started][getting_started] documentation for more details, 
 ## Running locally
   The application uses [Node.js][http://nodejs.org/] and [npm][https://www.npmjs.com/] so you will have to download and install them as part of the steps below.
 
-1. Copy the credentials from your `tradeoff-analytics-service` service in Bluemix to `app.js`, you can see the credentials using:
+1. Copy the credentials from your `tradeoff-analytics-standard-service` service in Bluemix to `app.js`, you can see the credentials using:
 
     ```sh
     $ cf env <application-name>
@@ -66,7 +66,7 @@ See the full [Getting Started][getting_started] documentation for more details, 
             "username": "<username>"
           },
         "label": "tradeoff-analytics",
-        "name": "tradeoff-analytics-service",
+        "name": "tradeoff-analytics-standard-service",
         "plan": "standard"
      }]
     }
