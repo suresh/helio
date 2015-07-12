@@ -22,6 +22,11 @@ var express = require('express'),
   watson = require('watson-developer-cloud'),
   extend = require('util')._extend;
 
+//avoid "request too large" exception
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 // Bootstrap application settings
 require('./config/express')(app);
 
