@@ -48,7 +48,7 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
   tradeoffAnalytics.dilemmas(req.body, function(err, dilemmas) {
     if (err)
-      return res.status(err.code || 500).json(err.error || 'Error processin the request');
+      return res.status(err.code || 500).json(err.error || 'Error processing the request');
     else
       return res.json(dilemmas);
   });
