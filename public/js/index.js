@@ -65,7 +65,11 @@
    */
   function loadTradeoffAnalytics(profile, themeName, callback, errCallback) {
     taClient = new TA.TradeoffAnalytics({
-      dilemmaServiceUrl: '/',
+      dilemmaServiceUrl: 'demo/dilemmas',
+      analyticsEventsUrl: 'demo/events',
+      metadata: {
+    	"app-version" : "2015-09-03"
+      },
       customCssUrl: 'https://ta-cdn.mybluemix.net/v1/modmt/styles/' + themeName + '.css',
       profile: profile
     }, 'taWidgetContainer');
@@ -85,7 +89,9 @@
   }
 
   function showTradeoffAnalytcsWidget(problem) {
-    taClient.show(problem, onResultsReady);
+    taClient.show(problem, onResultsReady, {
+    	"dataset-name" : problem.subject
+    });
     currentProblem = problem;
   }
 

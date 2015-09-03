@@ -45,14 +45,31 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.post('/', function(req, res) {
+app.post('/demo/dilemmas/', function(req, res) {
   tradeoffAnalytics.dilemmas(req.body, function(err, dilemmas) {
     if (err)
       return res.status(err.code || 500).json(err.error || 'Error processing the request');
     else
       return res.json(dilemmas);
-  });
+  }, getMetadata(req));
 });
+
+app.post('/demo/events/', function(req, res) {
+  tradeoffAnalytics.events(req.body, function(err) {
+    if (err)
+      return res.status(err.code || 500).json(err.error || 'Error processing the request');
+    else
+      return res.send();
+  }, getMetadata(req));
+});
+
+function getMetadata(req) {
+	var metadata = req.header('x-watson-metadata');
+	if (metadata) {
+		metadata += "client-ip:" + req.ip;
+	}
+	return metadata;
+}
 
 var port = process.env.VCAP_APP_PORT || 3000;
 app.listen(port);
