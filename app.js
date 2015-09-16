@@ -46,21 +46,27 @@ app.get('/', function(req, res) {
 });
 
 app.post('/demo/dilemmas/', function(req, res) {
-  tradeoffAnalytics.dilemmas(req.body, function(err, dilemma) {
+  var params = extend(req.body);
+  params.metadataHeader = getMetadata(req);
+  
+  tradeoffAnalytics.dilemmas(params, function(err, dilemma) {
     if (err)
       return res.status(err.code || 500).send(err.error || 'Error processing the request');
     else
       return res.json(dilemma);
-  }, getMetadata(req));
+  });
 });
 
 app.post('/demo/events/', function(req, res) {
-  tradeoffAnalytics.events(req.body, function(err) {
+  var params = extend(req.body);
+  params.metadataHeader = getMetadata(req);
+  
+  tradeoffAnalytics.events(params, function(err) {
     if (err)
       return res.status(err.code || 500).send(err.error || 'Error forwarding events');
     else
       return res.send();
-  }, getMetadata(req));
+  });
 });
 
 function getMetadata(req) {
