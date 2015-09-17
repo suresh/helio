@@ -69,7 +69,7 @@
       analyticsEventsUrl: 'demo/events',
       metadata: {
     	'app-call-context' : 'tradeoff-analytics-nodejs',
-    	"app-version" : "2015-09-17"
+    	'app-version' : '2015-09-17'
       },
       customCssUrl: 'https://ta-cdn.mybluemix.net/v1/modmt/styles/' + themeName + '.css',
       profile: profile
