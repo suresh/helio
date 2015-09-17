@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
 
 app.post('/demo/dilemmas/', function(req, res) {
   var params = extend(req.body);
-  params.metadataHeader = getMetadata(req);
+  params.metadata_header = getMetadata(req);
   
   tradeoffAnalytics.dilemmas(params, function(err, dilemma) {
     if (err)
@@ -59,7 +59,7 @@ app.post('/demo/dilemmas/', function(req, res) {
 
 app.post('/demo/events/', function(req, res) {
   var params = extend(req.body);
-  params.metadataHeader = getMetadata(req);
+  params.metadata_header = getMetadata(req);
   
   tradeoffAnalytics.events(params, function(err) {
     if (err)
