@@ -45,14 +45,37 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.post('/', function(req, res) {
-  tradeoffAnalytics.dilemmas(req.body, function(err, dilemmas) {
-    if (err)
-      return res.status(err.code || 500).json(err.error || 'Error processing the request');
+app.post('/demo/dilemmas/', function(req, res) {
+  var params = extend(req.body);
+  params.metadata_header = getMetadata(req);
+  
+  tradeoffAnalytics.dilemmas(params, function(err, dilemma) {
+    if (err) 
+      return res.status(Number(err.code) || 502).send(err.error || err.message || 'Error processing the request');
     else
-      return res.json(dilemmas);
+      return res.json(dilemma);
   });
 });
+
+app.post('/demo/events/', function(req, res) {
+  var params = extend(req.body);
+  params.metadata_header = getMetadata(req);
+  
+  tradeoffAnalytics.events(params, function(err) {
+    if (err)
+      return res.status(Number(err.code) || 502).send(err.error || err.message || 'Error forwarding events');
+    else
+      return res.send();
+  });
+});
+
+function getMetadata(req) {
+	var metadata = req.header('x-watson-metadata');
+	if (metadata) {
+		metadata += "client-ip:" + req.ip;
+	}
+	return metadata;
+}
 
 var port = process.env.VCAP_APP_PORT || 3000;
 app.listen(port);

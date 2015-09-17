@@ -65,7 +65,12 @@
    */
   function loadTradeoffAnalytics(profile, themeName, callback, errCallback) {
     taClient = new TA.TradeoffAnalytics({
-      dilemmaServiceUrl: '/',
+      dilemmaServiceUrl: 'demo/dilemmas',
+      analyticsEventsUrl: 'demo/events',
+      metadata: {
+    	'app-call-context' : 'tradeoff-analytics-nodejs',
+    	'app-version' : '2015-09-17'
+      },
       customCssUrl: 'https://ta-cdn.mybluemix.net/v1/modmt/styles/' + themeName + '.css',
       profile: profile
     }, 'taWidgetContainer');
@@ -85,7 +90,9 @@
   }
 
   function showTradeoffAnalytcsWidget(problem) {
-    taClient.show(problem, onResultsReady);
+    taClient.show(problem, onResultsReady, {
+    	"dataset-name" : problem.subject
+    });
     currentProblem = problem;
   }
 
@@ -125,7 +132,7 @@
 
       createOptionsTable(problem, tableParent);
     } catch (err) {
-      onError({error:'JSON parsing error'});
+      onError('JSON parsing error');
     }
   }
 
@@ -246,7 +253,7 @@
       elementJson = JSON.parse(element.val());
     } catch(e) {
       element.css('border','1px solid red');
-      onError({error: 'JSON is malformed.'});
+      onError('JSON is malformed.');
       return elementJson;
     }
     element.css('border','1px solid grey');
@@ -280,22 +287,8 @@
     }
   }
 
-function onError(error) {
-    var errorMsg = 'Error processing the request.';
-    if (error) {
-      if (error.responseText) {
-        errorMsg = error.responseText;
-      }
-      else {
-        try {
-          errorMsg = JSON.stringify(error, null, 4);
-        }
-        catch (e) { // a complex object - can't be converted to json, take it's toString representation
-          errorMsg = error.toString();
-        }
-      }
-    }
-
+  function onError(error) {
+    var errorMsg = error.errorMessage || error;
     $('.errorMsg').text(errorMsg);
     $('.errorArea').show();
     onPageReady();
@@ -384,15 +377,15 @@ function onError(error) {
   }
 
   function recreateWidgetIfNeeded(showWidget) {
-  var showAdvanced = $('.showAdvance').val() === 'yes';
-  var selectedProfile = showAdvanced ?  $('.profiles').val() : 'basic';
-    var selectedTheme =  showAdvanced ?  $('#themes').val() : $('#themes option:first').val();
-  var profile = showAdvanced && selectedProfile === 'custom' ? JSON.parse($('#featuresText').val()) : selectedProfile;
+	var showAdvanced = $('.showAdvance').val() === 'yes';
+	var selectedProfile = showAdvanced ?  $('.profiles').val() : 'basic';
+	var selectedTheme =  showAdvanced ?  $('#themes').val() : $('#themes option:first').val();
+	var profile = showAdvanced && selectedProfile === 'custom' ? JSON.parse($('#featuresText').val()) : selectedProfile;
 
     if (selectedTheme !== lastTheme || JSON.stringify(profile) !== JSON.stringify(lastProfile))  {
-    destroyTradeoffAnalytcsWidget(function() {
-    loadTradeoffAnalytics(profile, selectedTheme, showWidget, onError);
-    });
+    	destroyTradeoffAnalytcsWidget(function() {
+    		loadTradeoffAnalytics(profile, selectedTheme, showWidget, onError);
+    	});
     } else {
       showWidget();
     }
@@ -429,8 +422,8 @@ function onError(error) {
 
   $('#minimizeBar').mouseenter(function() {
     if (timeoutHandle) {
-    clearTimeout(timeoutHandle);
-    timeoutHandle = null;
+    	clearTimeout(timeoutHandle);
+    	timeoutHandle = null;
     }
     showMinimizeBar();
   });
