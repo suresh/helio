@@ -50,8 +50,8 @@ app.post('/demo/dilemmas/', function(req, res) {
   params.metadata_header = getMetadata(req);
   
   tradeoffAnalytics.dilemmas(params, function(err, dilemma) {
-    if (err)
-      return res.status(err.code || 500).send(err.error || 'Error processing the request');
+    if (err) 
+      return res.status(Number(err.code) || 502).send(err.error || err.message || 'Error processing the request');
     else
       return res.json(dilemma);
   });
@@ -63,7 +63,7 @@ app.post('/demo/events/', function(req, res) {
   
   tradeoffAnalytics.events(params, function(err) {
     if (err)
-      return res.status(err.code || 500).send(err.error || 'Error forwarding events');
+      return res.status(Number(err.code) || 502).send(err.error || err.message || 'Error forwarding events');
     else
       return res.send();
   });
