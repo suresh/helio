@@ -9,11 +9,12 @@ block row-content
         div.form-group.row
           div.col-lg-6.col-md-6.col-xs-6
             label.control-label(for='problems') Select a scenario to find the best options in the scenario:
-            select#problems.problems.form-control
+            select#problems.problems.form-control(style="width: 50%;display: inline-block;")
               option(value='phones.json') Phones
               option(value='finance.json') Finance
               option(value='treatments-selection.json') Treatments-selection
               option(value='drug-candidates.json') Drug-candidates
+            a(href="http://tradeoff-analytics-csvtojson.mybluemix.net" target="top" style="margin-left: 20px;text-decoration: underline;font-size: smaller;") Bring your own data (CSV format)
           div.col-lg-6.col-md-6.col-xs-6.text-right
             input.analyze.btn(style=' display:none;', type='button', value='Analyze Sample Data')
             span.loading
