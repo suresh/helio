@@ -77,6 +77,6 @@ function getMetadata(req) {
 	return metadata;
 }
 
-var port = process.env.VCAP_APP_PORT || 3000;
+var port = process.env.VCAP_APP_PORT || 7000;
 app.listen(port);
 console.log('listening at:', port);

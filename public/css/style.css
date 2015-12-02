@@ -58,15 +58,15 @@
 }
 
 .legendIconEmpty {
-  background-image: url('../images/green_box.png');
+  background-image: url('../images/blue_box.png');
 }
 
 .legendIconMin {
-  background-image: url('../images/green_down.png');
+  background-image: url('../images/blue_down.png');
 }
 
 .legendIconMax {
-  background-image: url('../images/green_up.png');
+  background-image: url('../images/blue_up.png');
 }
 
 .problemArea textArea {
@@ -140,12 +140,12 @@
 
 #tablePlaceHolder table th.minimize {
   color: #ffffff;
-  background-color: #8bc53f;
+  background-color: #4178be;
 }
 
 #tablePlaceHolder table th.maximize {
   color: #ffffff;
-  background-color: #8bc53f;
+  background-color: #4178be;
 }
 .result {
   height: 0px;

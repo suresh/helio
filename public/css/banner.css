@@ -89,3 +89,20 @@
 .header .learn-more:hover {
   color: #82D1F5;
 }
+
+.announce {
+//	background-color: #d74108;
+  background-color: #db5a04;
+	color: white;
+}
+
+.announce a{
+	color: white;
+	text-decoration: underline;
+	font-size: 18px;
+}
+
+.announce h3 {
+	font-size: 18px;
+	margin: 15px;
+}
