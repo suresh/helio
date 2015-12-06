@@ -6,7 +6,8 @@ declared-services:
 applications:
 - services:
   - tradeoff-analytics-standard-service
-  name: tradeoff-analytics-nodejs
+  name: tradeoff-analytics-nodejs-SwissRe-Hackathon
   command: node app.js
   path: .
   memory: 128M
+  host: tradeoff-analytics-nodejs-SwissRe-Hackathon
