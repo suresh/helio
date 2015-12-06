@@ -3,25 +3,46 @@ extends ./layout.jade
 
 block row-content
   div.row
-    div.col-lg-12.col-xs-12
-      p Please select options that apply to you
+    div.col-lg-12.col-xs-12(style="height: 200px")
+      h2 Please select options that apply to you
       form(name="validateForm", method="post", action="/")
         div.col-lg-6.col-md-6.col-xs-6
-          label.control-label(for='streetnumber') Street Number:            
-          input.streetnumber(type="text", name="streetnumber", value=streetnumber, placeholder="43W")
+          label.control-label(for='streetnumber', style='font-size: 22px;') Street Number:            
+          input.streetnumber(type="text", name="streetnumber", value=streetnumber, placeholder="43W", style='margin-left: 0.5cm;')
         div.col-lg-6.col-md-6.col-xs-6
-          label.control-label(for='streetname') Street Name:
-          input.streetname(type="text", name="streetname", value=streetname, placeholder="23rd Street")      
+          label.control-label(for='streetname', style='font-size: 22px;') Street Name:
+          input.streetname(type="text", name="streetname", value=streetname, placeholder="23rd Street", style='margin-left: 0.5cm;')      
         div.col-lg-6.col-md-6.col-xs-6
-          label.control-label(for='aptnumber') Apt Number:
-          input.aptnumber(type='text', name='aptnumber', value=aptnumber, placeholder="2")
+          label.control-label(for='aptnumber', style='font-size: 22px;') Apt Number:
+          input.aptnumber(type='text', name='aptnumber', value=aptnumber, placeholder="2", style='margin-left: 0.5cm;')
         div.col-lg-6.col-md-6.col-xs-6
-          label.control-label(for='zip') Zip Code:
-          input.zip(type='decimal', name='zip', value=zip, placeholder="10010")
+          label.control-label(for='zip', style='font-size: 22px;') Zip Code:
+          input.zip(type='decimal', name='zip', value=zip, placeholder="10010", style='margin-left: 0.5cm;')
         div.col-lg-6.col-md-6.col-xs-6
           p
-        div.col-lg-6.col-md-6.col-xs-6
-          button(onclick='validateForm()', name='submit',value=submit) Submit 
+      div.col-lg-6.col-md-6.col-xs-6
+        button(onclick='validateForm()', name='Submit',value=submit, style='margin-left: 0.5cm;font-size: 22px;') Submit
+    h2 Here is your risk profile:
+    div.col-lg-12.col-md-12.col-xs-6(style="height: 400px;")
+      h3 Oh, the city that never sleeps. A grand location! I see your home is estimated at $500,000.
+      p
+      h3 We have a few policies crafted specially for you. Given your location, would you like to consider additional coverage?
+      div.row 
+      label(for='checkbox', style='margin-left: 2cm;font-size: 22px; white-space:pre')
+        input.flood(style='', type='checkbox', name='flood', checked=true, value='Flood Coverage')
+        | &thinsp; Flood Coverage <p style="text-indent: 0em;"> Last occurence in your area? 7 years ago</p>
+      div.row
+      label(for='checkbox', style='margin-left: 2cm;font-size: 22px;')
+        input.eathquake(style='', type='checkbox', name='earthquake', value='Flood Coverage')
+        | &thinsp; Earthquake Coverage <p style="text-indent: 0em;"> Last occurence in your area? 200 years ago</p>
+      div.row
+      label(for='checkbox', style='margin-left: 2cm;font-size: 22px;')
+        input.tornados(style='', type='checkbox', name='tornados', value='tornados Coverage')
+        | &thinsp; Tornado Coverage <p style="text-indent: 0em;"> Last occurence in your area? 50 years ago</p>
+      div.row
+      label(for='checkbox', style='margin-left: 2cm;font-size: 22px;')
+        input.terrorism(style='', type='checkbox', name='Terrorism', value='Terrorism Coverage')
+        | &thinsp; Terrorism Coverage <p style="text-indent: 0em;"> Last occurence in your area? 10 years ago</p>
     div.col-lg-12.col-xs-12
       h2 
       div.well
