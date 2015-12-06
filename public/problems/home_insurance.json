@@ -1,0 +1,207 @@
+{
+  "subject": "Home Insurance",
+  "columns": [
+    {
+      "key": "Price",
+      "full_name": "Monthly Premium (dollars)",
+      "type": "numeric",
+      "is_objective": true,
+      "goal": "min"
+    },
+    {
+      "key": "Replacement_Quality",
+      "full_name": "Replacements Quality (0 to 10)",
+      "type": "numeric",
+      "is_objective": true,
+      "goal": "max"
+    },
+    {
+      "key": "Customer_Service",
+      "full_name": "Customer Service (0 to 10)",
+      "type": "numeric",
+      "is_objective": true,
+      "goal": "max"
+    },
+    {
+      "key": "Ease_Of_Filing_Claim",
+      "full_name": "Ease of filing claim (0 to 10)",
+      "type": "numeric",
+      "is_objective": true,
+      "goal": "max"
+    },
+    {
+      "key": "Stable_Premiums",
+      "full_name": "Stable Premiums (0 to 10)",
+      "type": "numeric",
+      "is_objective": true,
+      "goal": "max"
+    }
+  ],
+  "options": [
+    { 
+      "key": "1", 
+      "name": "Allstate", 
+      "values" : {
+        "Price": 80.9571, 
+        "Replacement_Quality": 2,
+        "Customer_Service": 3, 
+        "Ease_Of_Filing_Claim": 1,
+        "Stable_Premiums": 4
+      }
+    },
+    { 
+      "key": "2", 
+      "name": "Travelers", 
+      "values" : {
+        "Price": 85.6971, 
+        "Replacement_Quality": 1,
+        "Customer_Service": 6, 
+        "Ease_Of_Filing_Claim": 2,
+        "Stable_Premiums": 2
+      }
+    },
+    { 
+      "key": "3", 
+      "name": "Progressive", 
+      "values" : {
+        "Price": 87.2548, 
+        "Replacement_Quality": 3,
+        "Customer_Service": 1, 
+        "Ease_Of_Filing_Claim": 1,
+        "Stable_Premiums": 4
+      }
+    },
+    {
+      "key": "4",
+      "name": "Nationwide",
+      "values": {
+        "Price": 92.4835,
+        "Replacement_Quality": 2,
+        "Customer_Service": 4,
+        "Ease_Of_Filing_Claim": 2,
+        "Stable_Premiums": 2
+      }
+    },
+    {
+      "key": "5",
+      "name": "The Hartford",
+      "values": {
+        "Price": 95.9065,
+        "Replacement_Quality": 4,
+        "Customer_Service": 2,
+        "Ease_Of_Filing_Claim": 2,
+        "Stable_Premiums": 3
+      }
+    },
+    {
+      "key": "6",
+      "name": "Liberty Mutual",
+      "values": {
+        "Price": 97.2673,
+        "Replacement_Quality": 2,
+        "Customer_Service": 5,
+        "Ease_Of_Filing_Claim": 4,
+        "Stable_Premiums": 1
+      }
+    },
+    {
+      "key": "7",
+      "name": "Safeco",
+      "values": {
+        "Price": 98.635,
+        "Replacement_Quality": 6,
+        "Customer_Service": 3,
+        "Ease_Of_Filing_Claim": 5,
+        "Stable_Premiums": 5
+      }
+    },
+    {
+      "key": "8",
+      "name": "Erie Financial",
+      "values": {
+        "Price": 100.8248,
+        "Replacement_Quality": 3,
+        "Customer_Service": 5,
+        "Ease_Of_Filing_Claim": 2,
+        "Stable_Premiums": 6
+      }
+    },
+    {
+      "key": "9",
+      "name": "American Modern",
+      "values": {
+        "Price": 100.9742,
+        "Replacement_Quality": 2,
+        "Customer_Service": 7,
+        "Ease_Of_Filing_Claim": 4,
+        "Stable_Premiums": 2
+      }
+    },
+    {
+      "key": "10",
+      "name": "American International Group",
+      "values": {
+        "Price": 103.6865,
+        "Replacement_Quality": 6,
+        "Customer_Service": 8,
+        "Ease_Of_Filing_Claim": 5,
+        "Stable_Premiums": 8
+      }
+    },
+    {
+      "key": "11",
+      "name": "Farmers Insurance",
+      "values": {
+        "Price": 107.9672,
+        "Replacement_Quality": 3,
+        "Customer_Service": 7,
+        "Ease_Of_Filing_Claim": 5,
+        "Stable_Premiums": 8
+      }
+    },
+    {
+      "key": "12",
+      "name": "USAA",
+      "values": {
+        "Price": 111.0187,
+        "Replacement_Quality": 6,
+        "Customer_Service": 8,
+        "Ease_Of_Filing_Claim": 2,
+        "Stable_Premiums": 2
+      }
+    },
+    {
+      "key": "13",
+      "name": "American Family Mutual",
+      "values": {
+        "Price": 115.4832,
+        "Replacement_Quality": 7,
+        "Customer_Service": 7,
+        "Ease_Of_Filing_Claim": 7,
+        "Stable_Premiums": 5
+      }
+    },
+    {
+      "key": "14",
+      "name": "StateFarm",
+      "values": {
+        "Price": 117.3217,
+        "Replacement_Quality": 8,
+        "Customer_Service": 6,
+        "Ease_Of_Filing_Claim": 9,
+        "Stable_Premiums": 3
+      }
+    },
+    {
+      "key": "15",
+      "name": "Chubb",
+      "values": {
+        "Price": 118.0617,
+        "Replacement_Quality": 10,
+        "Customer_Service": 9,
+        "Ease_Of_Filing_Claim": 9,
+        "Stable_Premiums": 0
+      }
+    }
+  ]
+}
