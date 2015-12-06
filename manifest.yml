@@ -6,8 +6,8 @@ declared-services:
 applications:
 - services:
   - tradeoff-analytics-standard-service
-  name: tradeoff-analytics-nodejs-SwissRe-Hackathon
+  name: helio
   command: node app.js
   path: .
   memory: 128M
-  host: tradeoff-analytics-nodejs-SwissRe-Hackathon
+  host: helio
