@@ -4,7 +4,26 @@ extends ./layout.jade
 block row-content
   div.row
     div.col-lg-12.col-xs-12
-      h2 Albert - Your Personal Risk Advisor
+      p Please select options that apply to you
+      form(name="validateForm", method="post", action="/")
+        div.col-lg-6.col-md-6.col-xs-6
+          label.control-label(for='streetnumber') Street Number:            
+          input.streetnumber(type="text", name="streetnumber", value=streetnumber, placeholder="43W")
+        div.col-lg-6.col-md-6.col-xs-6
+          label.control-label(for='streetname') Street Name:
+          input.streetname(type="text", name="streetname", value=streetname, placeholder="23rd Street")      
+        div.col-lg-6.col-md-6.col-xs-6
+          label.control-label(for='aptnumber') Apt Number:
+          input.aptnumber(type='text', name='aptnumber', value=aptnumber, placeholder="2")
+        div.col-lg-6.col-md-6.col-xs-6
+          label.control-label(for='zip') Zip Code:
+          input.zip(type='decimal', name='zip', value=zip, placeholder="10010")
+        div.col-lg-6.col-md-6.col-xs-6
+          p
+        div.col-lg-6.col-md-6.col-xs-6
+          button(onclick='validateForm()', name='submit',value=sumbit) Submit 
+    div.col-lg-12.col-xs-12
+      h2 
       div.well
         div.form-group.row
           div.col-lg-6.col-md-6.col-xs-6
